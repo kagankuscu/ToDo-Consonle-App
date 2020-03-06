@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b635f59b-1532-4302-8fb3-5ad51b140975" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/AddTask.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/JsonManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/MainManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ToDoManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,13 +33,16 @@
     </option>
   </component>
   <component name="ProjectId" id="1YkQhR8eN3xXWzIVJ9oBHoRpZy6" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
   </component>
@@ -61,14 +68,80 @@
     </task>
     <servers />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="414" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583484349607">
+    <state x="414" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583504822980">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="414" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080/-1366.304.1366.768@0.0.1920.1080" timestamp="1583484349607" />
-    <state x="689" y="324" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1583484346874">
+    <state x="414" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080/-1366.304.1366.768@0.0.1920.1080" timestamp="1583504822980" />
+    <state x="765" y="256" key="#com.intellij.ide.util.MemberChooser" timestamp="1583507120312">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="689" y="324" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1080/-1366.304.1366.768@0.0.1920.1080" timestamp="1583484346874" />
+    <state x="765" y="256" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080/-1366.304.1366.768@0.0.1920.1080" timestamp="1583507120312" />
+    <state x="689" y="324" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1583504819556">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="689" y="324" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1080/-1366.304.1366.768@0.0.1920.1080" timestamp="1583504819556" />
+    <state x="690" y="287" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1583505072473">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="690" y="287" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1080/-1366.304.1366.768@0.0.1920.1080" timestamp="1583505072473" />
+    <state width="438" height="466" key="DebuggerActiveHint" timestamp="1583505975892">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="438" height="466" key="DebuggerActiveHint/0.0.1920.1080/-1366.304.1366.768@0.0.1920.1080" timestamp="1583505975892" />
+    <state width="1877" height="295" key="GridCell.Tab.0.bottom" timestamp="1583510838565">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="295" key="GridCell.Tab.0.bottom/0.0.1920.1080/-1366.304.1366.768@0.0.1920.1080" timestamp="1583510838565" />
+    <state width="1877" height="295" key="GridCell.Tab.0.center" timestamp="1583510838565">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="295" key="GridCell.Tab.0.center/0.0.1920.1080/-1366.304.1366.768@0.0.1920.1080" timestamp="1583510838565" />
+    <state width="1877" height="295" key="GridCell.Tab.0.left" timestamp="1583510838565">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="295" key="GridCell.Tab.0.left/0.0.1920.1080/-1366.304.1366.768@0.0.1920.1080" timestamp="1583510838565" />
+    <state width="1877" height="295" key="GridCell.Tab.0.right" timestamp="1583510838565">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="295" key="GridCell.Tab.0.right/0.0.1920.1080/-1366.304.1366.768@0.0.1920.1080" timestamp="1583510838565" />
+    <state width="1877" height="363" key="GridCell.Tab.1.bottom" timestamp="1583509414336">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="363" key="GridCell.Tab.1.bottom/0.0.1920.1080/-1366.304.1366.768@0.0.1920.1080" timestamp="1583509414336" />
+    <state width="1877" height="363" key="GridCell.Tab.1.center" timestamp="1583509414335">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="363" key="GridCell.Tab.1.center/0.0.1920.1080/-1366.304.1366.768@0.0.1920.1080" timestamp="1583509414335" />
+    <state width="1877" height="363" key="GridCell.Tab.1.left" timestamp="1583509414335">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="363" key="GridCell.Tab.1.left/0.0.1920.1080/-1366.304.1366.768@0.0.1920.1080" timestamp="1583509414335" />
+    <state width="1877" height="363" key="GridCell.Tab.1.right" timestamp="1583509414335">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="363" key="GridCell.Tab.1.right/0.0.1920.1080/-1366.304.1366.768@0.0.1920.1080" timestamp="1583509414335" />
+    <state width="562" height="446" key="SwitcherDM" timestamp="1583510777654">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="562" height="446" key="SwitcherDM/0.0.1920.1080/-1366.304.1366.768@0.0.1920.1080" timestamp="1583510777654" />
+    <state x="616" y="250" key="run.anything.popup" timestamp="1583509527794">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="616" y="250" key="run.anything.popup/0.0.1920.1080/-1366.304.1366.768@0.0.1920.1080" timestamp="1583509527793" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../JavaClient/src/main/java/com/kagan/RaspberryClient/ConfigurationManager.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
