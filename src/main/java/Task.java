@@ -1,9 +1,9 @@
-public class AddTask {
+public class Task {
     private int id;
     private String content;
     private boolean isCompleted;
 
-    public AddTask() {
+    public Task() {
     }
 
     public int getId() {
