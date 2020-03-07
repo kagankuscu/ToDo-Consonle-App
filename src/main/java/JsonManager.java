@@ -26,6 +26,7 @@ public class JsonManager implements IFileCreate {
     private List<Task> tasks;
     //endregion
 
+
     public JsonManager() {
         this.localDateTimeNow = LocalDateTime.now();
         this.formattedDateTime = dateTimeFormatter.format(localDateTimeNow).split(" ");
@@ -41,8 +42,9 @@ public class JsonManager implements IFileCreate {
         try (BufferedWriter bufferedWriter = Files.newBufferedWriter(
                 Paths.get(FILES_PATH + getFormattedDateTime()))) {
 
-            if (this.tasks != null) {
+            if (!this.tasks.isEmpty()) {
                 this.tasks.add(task);
+                this.tasks.sort(new SortById());
                 gson.toJson(this.tasks, bufferedWriter);
             } else {
                 List<Task> newTask = Arrays.asList(task);
@@ -81,6 +83,7 @@ public class JsonManager implements IFileCreate {
             e.getStackTrace();
         }
     }
+
     @Override
     public boolean checkFileAlreadyCreated() throws IOException {
         File file = new File(FILES_PATH + getFormattedDateTime());

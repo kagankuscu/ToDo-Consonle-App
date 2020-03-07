@@ -1,9 +1,21 @@
+import java.time.LocalDate;
+
 public class Task {
     private int id;
+    private LocalDate date;
     private String content;
     private boolean isCompleted;
 
     public Task() {
+    }
+
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     public int getId() {
