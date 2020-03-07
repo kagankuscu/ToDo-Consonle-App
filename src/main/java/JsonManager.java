@@ -8,48 +8,31 @@ import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 
 public class JsonManager implements IFileCreate {
     // region Variables
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
-    private JsonParser parser = new JsonParser();
-    private Type listOfMyClassObject = new TypeToken<List<Task>>() {
-    }.getType();
 
-    private LocalDateTime localDateTimeNow;
-    private String[] formattedDateTime;
-    private final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm:a");
     private final String FILES_PATH = "src/main/resources/";
     private final String JSON_EXTENSION = ".json";
-    private List<Task> tasks;
     //endregion
 
-
     public JsonManager() {
-        this.localDateTimeNow = LocalDateTime.now();
-        this.formattedDateTime = dateTimeFormatter.format(localDateTimeNow).split(" ");
-        this.loadToVar();
     }
 
-    public String getFormattedDateTime() {
-        return formattedDateTime[0] + JSON_EXTENSION;
-    }
-
-    public void writeToFiles(Task task) {
+    public void writeToFile(List<Task> tasks, String fileName) {
 
         try (BufferedWriter bufferedWriter = Files.newBufferedWriter(
-                Paths.get(FILES_PATH + getFormattedDateTime()))) {
+                Paths.get(FILES_PATH + fileName + JSON_EXTENSION))) {
 
-            if (!this.tasks.isEmpty()) {
-                this.tasks.add(task);
-                this.tasks.sort(new SortById());
-                gson.toJson(this.tasks, bufferedWriter);
-            } else {
-                List<Task> newTask = Arrays.asList(task);
-                gson.toJson(newTask, bufferedWriter);
-            }
+            // clean file
+            bufferedWriter.write("");
+
+            // write all list
+            gson.toJson(tasks, bufferedWriter);
         } catch (IOException e) {
             e.getStackTrace();
         } catch (Exception e) {
@@ -57,39 +40,31 @@ public class JsonManager implements IFileCreate {
         }
     }
 
-    public void readAll(String name) {
-
+    public List<Task> readAll(String fileName) {
         try {
-            this.loadToVar();
+            checkFileAlreadyCreated(fileName);
 
-            for (Task obj : this.tasks) {
-                System.out.println(obj);
-            }
-        } catch (NullPointerException e) {
-            System.out.println("File is empty.");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void loadToVar() {
-        try {
+            Type listOfMyClassObject = new TypeToken<List<Task>>() {
+            }.getType();
             BufferedReader bufferedReader = Files.newBufferedReader(
-                    Paths.get(FILES_PATH + getFormattedDateTime()));
-            JsonElement rootElement = parser.parse(bufferedReader);
-            this.tasks = gson.fromJson(rootElement, listOfMyClassObject);
+                    Paths.get(FILES_PATH + fileName + JSON_EXTENSION));
+            JsonElement rootElement = new JsonParser().parse(bufferedReader);
+            List<Task> result = gson.fromJson(rootElement, listOfMyClassObject);
 
-        } catch (IOException e) {
-            e.getStackTrace();
+            return result;
+        } catch (NullPointerException e) {
+            List<Task> items = Collections.emptyList();
+            return items;
+        } catch (Exception e) {
+            return null;
         }
     }
 
     @Override
-    public boolean checkFileAlreadyCreated() throws IOException {
-        File file = new File(FILES_PATH + getFormattedDateTime());
+    public boolean checkFileAlreadyCreated(String fileName) throws IOException {
+        File file = new File(FILES_PATH + fileName + JSON_EXTENSION);
 
         if (file.createNewFile()) {
-            System.out.println("creating file");
             return false;
         }
         return true;

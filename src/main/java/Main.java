@@ -1,5 +1,6 @@
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -7,29 +8,56 @@ public class Main {
 
     public static void main(String[] args) {
         JsonManager jsonManager = new JsonManager();
-        ToDoManager todo = new ToDoManager();
-        var items = jsonManager.readAll(getFileName());
-
-        if (items == null) {
-            System.out.println("error");
+        ToDoManager todo = loadData(jsonManager);
+        if (todo == null) {
             return;
         }
+
         Scanner scanner = new Scanner(System.in);
         boolean isContinue = true;
         while (isContinue) {
             printOptions();
             try {
-                int input = scanner.nextInt();
+                String inputStr = scanner.nextLine();
+                int input = Integer.parseInt(inputStr);
 
                 switch (input) {
                     case 1:
+                        List<String> items = todo.getAsString();
+                        for (String s : items) {
+                            System.out.println(s);
+                        }
                         break;
+                    case 2:
+                        System.out.println("Enter the content.");
+                        String content = scanner.nextLine();
+                        if (todo.add(content, dayOffSet))
+                        break;
+                    case 3:
+                        String idStr = scanner.nextLine();
+                        int id = Integer.parseInt(idStr);
 
+                        if (todo.delete(id)) {
+                            System.out.printf("%d is deleted\n", id);
+                        } else {
+                            System.out.println("Record not deleted. Something happened.:D");
+                        }
+                        break;
+                    case 4:
+                        dayOffSet -= 1;
+                        loadData(jsonManager);
+                        break;
+                    case 5:
+                        dayOffSet += 1;
+                        loadData(jsonManager);
+                        break;
                     case 9:
-                        return; // save all files
+                        List<Task> itemsToSave = todo.get();
+                        jsonManager.writeToFile(itemsToSave, getFileName());
+                        isContinue = false;
                         break;
                     default:
-                        throw new Exception();
+                        System.out.println("invalid input.");
                         break;
                 }
             } catch (Exception e) {
@@ -47,9 +75,20 @@ public class Main {
 
     private static void printOptions() {
         System.out.println("1: List all items");
-        System.out.println("2: List all items");
-        System.out.println("3: List all items");
-        System.out.println("4: List all items");
+        System.out.println("2: Add new item");
+        System.out.println("3: Delete item");
+        System.out.println("4: Switch to previous day");
+        System.out.println("5: Switch to next day");
         System.out.println("9: Close the app.");
+    }
+
+    private static ToDoManager loadData(JsonManager jsonManager) {
+        var items = jsonManager.readAll(getFileName());
+
+        if (items == null) {
+            System.out.println("error");
+            return null;
+        }
+        return new ToDoManager(items);
     }
 }

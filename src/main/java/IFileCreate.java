@@ -1,5 +1,5 @@
 import java.io.IOException;
 
 public interface IFileCreate {
-    boolean checkFileAlreadyCreated() throws IOException;
+    boolean checkFileAlreadyCreated(String fileName) throws IOException;
 }

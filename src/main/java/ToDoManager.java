@@ -1,7 +1,10 @@
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import static java.util.stream.Collectors.toList;
 
 public class ToDoManager {
     private List<Task> items;
@@ -34,22 +37,33 @@ public class ToDoManager {
     }
 
     public boolean delete(int id) {
-        var item = items.stream().filter(a -> a.getId() == id).findFirst();
-        int count = items.size();
 
-        if (item == null){
-            return false;
+        items = (List<Task>) items.stream()
+                .filter(a -> a.getId() != id)
+                .map(x -> (Task) x)
+                .collect(toList());;
+
+        return true;
+    }
+
+    public List<String> getAsString() {
+        List<String> result = new ArrayList<>();
+
+        for (Task t: items) {
+            result.add(t.toString());
         }
 
-        items.remove(item);
+        return result;
+    }
 
-        return items.size() < count;
+    public List<Task> get() {
+        return items;
     }
 
     public int getLastId() {
         int id = 1;
         if (items.size() > 0) {
-            Collections.sort(items, (a, b) -> a.getId() - b.getId());
+            Collections.sort(items, (a, b) -> b.getId() - a.getId());
             id = (items.get(0).getId() + 1);
         }
 
