@@ -45,8 +45,7 @@ public class JsonManager implements IFileCreate {
             }.getType();
             BufferedReader bufferedReader = Files.newBufferedReader(
                     Paths.get(FILES_PATH + fileName + JSON_EXTENSION));
-            JsonElement rootElement = new JsonParser().parse(bufferedReader);
-            List<Task> result = gson.fromJson(rootElement, listOfMyClassObject);
+            List<Task> result = gson.fromJson(bufferedReader, listOfMyClassObject);
 
             return result;
         } catch (NullPointerException e) {
