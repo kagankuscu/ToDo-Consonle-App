@@ -34,7 +34,16 @@ public class ToDoManager {
     }
 
     public boolean delete(int id) {
-     return    
+        var item = items.stream().filter(a -> a.getId() == id).findFirst();
+        int count = items.size();
+
+        if (item == null){
+            return false;
+        }
+
+        items.remove(item);
+
+        return items.size() < count;
     }
 
     public int getLastId() {

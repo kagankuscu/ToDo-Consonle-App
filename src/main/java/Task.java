@@ -9,7 +9,6 @@ public class Task {
     public Task() {
     }
 
-
     public LocalDate getDate() {
         return date;
     }
