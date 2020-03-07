@@ -38,10 +38,8 @@ public class ToDoManager {
 
     public boolean delete(int id) {
 
-        items = (List<Task>) items.stream()
-                .filter(a -> a.getId() != id)
-                .map(x -> (Task) x)
-                .collect(toList());;
+        items = (List<Task>) items.stream().filter(a -> a.getId() != id).map(x -> (Task) x).collect(toList());
+        ;
 
         return true;
     }
@@ -49,7 +47,7 @@ public class ToDoManager {
     public List<String> getAsString() {
         List<String> result = new ArrayList<>();
 
-        for (Task t: items) {
+        for (Task t : items) {
             result.add(t.toString());
         }
 
