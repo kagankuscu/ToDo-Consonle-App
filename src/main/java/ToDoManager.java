@@ -1,30 +1,49 @@
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.Collections;
+import java.util.List;
 
-public class ToDoManager extends JsonManager{
+public class ToDoManager {
+    private List<Task> items;
 
-    public ToDoManager() {}
-
-    public void loadAllItem() {
-
+    public ToDoManager(List<Task> _items) {
+        this.items = _items;
     }
 
-    public void addNewItem(int id,String content) {
+    public boolean add(String content, int dayOffSet) {
         Task task = new Task();
 
         try {
-
-            if (checkFileAlreadyCreated()) {
-                task.setId(id);
-                task.setContent(content);
-                task.setCompleted(false);
-
-                writeToFiles(task);
+            if (content.isEmpty()) {
+                return false;
             }
 
-        } catch (IOException e) {
-            e.printStackTrace();
+            task.setContent(content);
+            LocalDate currentDate = LocalDate.now();
+            currentDate = currentDate.plusDays(dayOffSet);
+            task.setDate(currentDate);
+            task.setId(getLastId());
+
+            items.add(task);
+
+            return true;
         } catch (Exception e) {
             e.getStackTrace();
+            return false;
         }
+    }
+
+    public boolean delete(int id) {
+     return    
+    }
+
+    public int getLastId() {
+        int id = 1;
+        if (items.size() > 0) {
+            Collections.sort(items, (a, b) -> a.getId() - b.getId());
+            id = (items.get(0).getId() + 1);
+        }
+
+        return id;
     }
 }
