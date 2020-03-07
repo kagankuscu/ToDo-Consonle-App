@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Task {
     private int id;
@@ -43,10 +44,14 @@ public class Task {
 
     @Override
     public String toString() {
-        return "AddTask{" +
-                "id=" + id +
-                ", content='" + content + '\'' +
-                ", isCompleted=" + isCompleted +
-                '}';
+        final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
+        return "#" + id
+                + " "
+                + (!isCompleted ? "[ ]" : "[X]")
+                + " ("
+                + dateTimeFormatter.format(date)
+                + ") "
+                + content;
     }
 }
