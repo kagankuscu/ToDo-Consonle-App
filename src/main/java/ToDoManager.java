@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -39,7 +38,6 @@ public class ToDoManager {
     public boolean delete(int id) {
 
         items = (List<Task>) items.stream().filter(a -> a.getId() != id).map(x -> (Task) x).collect(toList());
-        ;
 
         return true;
     }

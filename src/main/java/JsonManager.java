@@ -8,22 +8,21 @@ import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.List;
 
-
 public class JsonManager implements IFileCreate {
     // region Variables
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-    private final String FILES_PATH = "src/main/resources/";
+    private final String FILES_PATH = "E:/Java Programming Language/TO-DO-app/src/main/resources/";
     private final String JSON_EXTENSION = ".json";
-    //endregion
+    // endregion
 
     public JsonManager() {
     }
 
     public void writeToFile(List<Task> tasks, String fileName) {
 
-        try (BufferedWriter bufferedWriter = Files.newBufferedWriter(
-                Paths.get(FILES_PATH + fileName + JSON_EXTENSION))) {
+        try (BufferedWriter bufferedWriter = Files
+                .newBufferedWriter(Paths.get(FILES_PATH + fileName + JSON_EXTENSION))) {
 
             // clean file
             bufferedWriter.write("");
@@ -43,8 +42,7 @@ public class JsonManager implements IFileCreate {
 
             Type listOfMyClassObject = new TypeToken<List<Task>>() {
             }.getType();
-            BufferedReader bufferedReader = Files.newBufferedReader(
-                    Paths.get(FILES_PATH + fileName + JSON_EXTENSION));
+            BufferedReader bufferedReader = Files.newBufferedReader(Paths.get(FILES_PATH + fileName + JSON_EXTENSION));
             List<Task> result = gson.fromJson(bufferedReader, listOfMyClassObject);
 
             return result;
@@ -52,6 +50,7 @@ public class JsonManager implements IFileCreate {
             List<Task> items = Collections.emptyList();
             return items;
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             return null;
         }
     }

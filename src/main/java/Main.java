@@ -86,7 +86,7 @@ public class Main {
         var items = jsonManager.readAll(getFileName());
 
         if (items == null) {
-            System.out.println("error");
+            System.out.println("items is null.");
             return null;
         }
         return new ToDoManager(items);
